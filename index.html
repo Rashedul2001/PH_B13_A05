@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn Page - GitHub Issues Tracker</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <!-- main style -->
+    <link rel="stylesheet" href="styles/mainStyle.css">
+    <!-- tailwind and daisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+</head>
+
+<body>
+    <main class=" w-full max-w-lg p-8 my-14 mx-auto space-y-6 shadow-[0px_0px_16px_2px] shadow-slate-400 rounded-md">
+        <div class="text-center">
+            <img src="assets/github-logo.png" alt="GitHub Logo" class="inline-block mb-6 ">
+            <h2 class="  font-semibold text-2xl">GitHub Issues Tracker</h2>
+            <p class="color-gray">Sign in to manage your issues</p>
+        </div>
+        <div class="space-y-4">
+            <div>
+                <label for="user-name" class="  font-medium mb-2 ">Username</label>
+                <input type="text" id="user-name" placeholder="Enter Username"
+                    class="block w-full p-4 rounded-lg border border-[#E4E4E7] mb-2">
+                <p class="color-blue text-sm ">Default: admin</p>
+            </div>
+            <div>
+                <label for="password" class="  font-medium mb-2">Password</label>
+                <input type="password" id="password" placeholder="Enter Password"
+                    class="block w-full p-4 rounded-lg border border-[#E4E4E7] mb-2">
+                <p class="color-blue tpxt-sm ">Default: admin123</p>
+            </div>
+        </div>
+        <button type="button"
+            class="cursor-pointer block w-full bg-blue-600 p-4 rounded-lg text-white font-semibold ">Sign In</button>
+        <p class="text-center  ">OR</p>
+        <div class="text-center mb-6">
+            <p class="color-gray mb-6">Demo Credentials:</p>
+            <p class=""><span class="font-semibold">Username:</span> admin</p>
+            <p><span class="font-semibold">Password:</span> admin123</p>
+        </div>
+
+    </main>
+    <script src="scripts/mainScript.js"></script>
+</body>
+
+</html>

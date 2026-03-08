@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <!-- main style -->
+    <link rel="stylesheet" href="../styles/mainStyle.css">
+    <!-- tailwind and daisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div id="parent"
+        class="fixed inset-0 flex justify-center items-center h-screen bg-black bg-opacity-10 backdrop-blur-sm ">
+        <section id="modal-body"
+            class="fixed bg-gray-200 rounded-xl p-8 space-y-6 shadow-[0px_0px_10px_4px_rgba(0,0,0,0.4)]">
+            <div class="">
+                <h1 class="text-2xl font-bold mb-2">Fix broken image uploads</h1>
+                <p class="text-gray-500 text-sm"><span
+                        class="bg-green-600 rounded-full py-1 px-2 text-white">Opened</span>
+                    <i class="fa-solid fa-circle  text-[4px] align-middle"></i>
+                    Opened by Fahim
+                    Ahmed <i class="fa-solid fa-circle  text-[4px] align-middle"></i> 22/02/2026
+                </p>
+            </div>
+            <div class="flex items-center gap-1">
+                <p class="text-red-600 border border-red-300 bg-red-100 uppercase rounded-full p-2 text-sm font-medium">
+                    <i class="fa-solid fa-bug mr-[2px]"></i>Bug
+                </p>
+                <p
+                    class="text-orange-600 border border-orange-300 bg-orange-100 uppercase rounded-full p-2 text-sm font-medium">
+                    <i class="fa-solid fa-life-ring mr-[2px]"></i>Help Wanted
+                </p>
+            </div>
+            <p class="text-gray-500">The navigation menu doesn't collapse properly on mobile devices. Need to fix the
+                responsive behavior.</p>
+            <div class="p-4  flex gap-2 ">
+                <div class="flex-1">
+                    <p class="text-gray-500">Assignee:</p>
+                    <p class="font-semibold">Fahim Ahmed</p>
+                </div>
+                <div class="flex-1">
+                    <p class="text-gray-500 ">Priority:</p>
+                    <p class="text-sm font-medium uppercase bg-red-600 text-white px-2 inline-block py-1 rounded-full ">
+                        High</p>
+                </div>
+            </div>
+            <div class="text-end">
+                <button class="btn btn-primary">Close
+                </button>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

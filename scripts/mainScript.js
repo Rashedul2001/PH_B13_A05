@@ -1,3 +1,5 @@
+// TODO: set empty search to get all the data 
+
 const cardContainer = document.getElementById("card-container");
 const totalIssue = document.getElementById("total-issues");
 const allBtn = document.getElementById("btn-all")
@@ -26,16 +28,7 @@ const showSpinner = (status) => {
     }
 };
 
-const createCard = (issue) => {
-    const card = document.createElement("div");
-    const status = issue.status === "open";
-    const priorityColor = () => {
-        if (issue.priority === "high")
-            return "text-red-600 bg-red-100";
-        if (issue.priority === "medium")
-            return "text-orange-600 bg-orange-100";
-        return "text-gray-500 bg-gray-200";
-    }
+const getLabel = (issue) => {
     let labelParaTag = [];
     issue.labels.forEach((label) => {
         if (label === "bug") {
@@ -64,10 +57,23 @@ const createCard = (issue) => {
                             </p>`);
         }
     });
+    return labelParaTag;
+}
 
+const createCard = (issue) => {
+    const card = document.createElement("div");
+    const status = issue.status === "open";
+    const priorityColor = () => {
+        if (issue.priority === "high")
+            return "text-red-600 bg-red-100";
+        if (issue.priority === "medium")
+            return "text-orange-600 bg-orange-100";
+        return "text-gray-500 bg-gray-200";
+    }
+    let labelParaTag = getLabel(issue);
 
-
-    card.classList.add(`card-${issue.id}`, "issue-card", `${issue.status}`, "p-4", "rounded-lg", "border-t-4", `${status ? "border-t-green-600" : "border-t-purple-600"}`, "card-shadow");
+    card.id = `card-${issue.id}`;
+    card.classList.add("issue-card", `${issue.status}`, "p-4", "rounded-lg", "border-t-4", `${status ? "border-t-green-600" : "border-t-purple-600"}`, "card-shadow");
     const cardHtml = `
                         <div class="flex justify-between items-center mb-3">
                             <img src=${status ? "../assets/Open-Status.png" : "../assets/Closed-Status.png"} alt="${issue.status}">
@@ -216,4 +222,81 @@ searchBox.addEventListener("keydown", async (e) => {
 
 });
 
+const createAndShowModal = async (id) => {
+    showSpinner(true);
+    const response = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+    const data = await response.json();
+    const issue = data.data;
+    const status = issue.status === "open";
+    const modal = document.createElement("div");
+    let priorityColor;
 
+    switch (issue.priority) {
+        case "high":
+            priorityColor = "red";
+            break;
+        case "medium":
+            priorityColor = "orange";
+            break;
+        default:
+            priorityColor = "gray";
+    }
+
+    modal.id = "modal";
+    modal.innerHTML = `
+    <div id="parent" class="fixed inset-0 flex justify-center items-center h-screen backdrop-blur-[1px] ">
+        <section id="modal-body" class="bg-gray-200 rounded-xl p-8 space-y-6 shadow-[0px_0px_10px_4px_rgba(0,0,0,0.4)]">
+            <div class="">
+                <h1 class="text-2xl font-bold mb-2">${issue.title}</h1>
+                <p class="text-gray-500 text-sm"><span
+                        class="bg-${status ? 'green' : 'purple'}-600 rounded-full py-1 px-2 text-white capitalize">${issue.status}${status ? "ed" : ""}</span>
+                    <span class="w-1 h-1 bg-gray-500 inline-block align-middle rounded-full mx-1  "></span>
+                    Opened by ${issue.author}
+                    <span class="w-1 h-1 bg-gray-500 inline-block align-middle rounded-full mx-1  "></span>
+                    ${new Date(issue.createdAt).toLocaleDateString()}
+                </p>
+            </div>
+            <div class=" flex items-center flex-wrap gap-1">
+                ${getLabel(issue).join('')}
+            </div>
+            <p class="text-gray-500">${issue.description}</p>
+            <div class="p-4  flex gap-2 ">
+                <div class="flex-1">
+                    <p class="text-gray-500">Assignee:</p>
+                    <p class="font-semibold">${issue.assignee || 'Unassigned'}</p>
+                </div>
+                <div class="flex-1">
+                    <p class="text-gray-500 ">Priority:</p>
+                    <p class="text-sm font-medium uppercase bg-${priorityColor}-600 text-white px-2 inline-block py-1 rounded-full ">
+                        ${issue.priority}</p>
+                </div>
+            </div>
+            <div class="text-end">
+                <button class="btn btn-primary" onclick="closeModal()">
+                    Close
+                </button>
+            </div>
+        </section>
+    </div>
+                    `;
+    document.body.appendChild(modal);
+    showSpinner(false);
+
+
+}
+function closeModal() {
+    const modal = document.getElementById("modal");
+    if (modal) {
+        document.body.removeChild(modal);
+    }
+}
+
+cardContainer.addEventListener("click", (e) => {
+    const card = e.target.closest(".issue-card");
+    if (!card) return;
+    const id = card.id.split("-")[1];
+
+    createAndShowModal(id);
+
+
+});

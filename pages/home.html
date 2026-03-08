@@ -1,7 +1,5 @@
 <!--TODO: rebuild the header section -->
-<!-- TODO: ask whether I need to make the design pixel perfect as figma. Also ask the anomaly in the header section with the search and create button  -->
-<!-- TODO: ask the anomaly about the container -->
-<!-- TODO: should I use two info at the bottom or 4 info at the bottom -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +32,7 @@
             </div>
             <div class="flex gap-2 items-center ">
                 <div class="relative">
-                    <input type="search" name="" id="" placeholder="Search issues..."
+                    <input id="search-box" type="search" name="" id="" placeholder="Search issues..."
                         class="w-80 py-3 pr-3 pl-10 border-gray-300 rounded-md">
                     <i class="fa-solid fa-magnifying-glass absolute top-[18px] left-4 text-gray-400  "></i>
                 </div>
@@ -44,8 +42,8 @@
         </div>
     </header>
 
-    <main class="mt-16 container mx-auto">
-        <!-- issue buttons  -->
+    <main class="mt-16 container mx-auto ">
+        <!-- category buttons  -->
         <nav class="flex items-start p-6">
             <div class=" grid grid-cols-3 gap-2">
                 <button id="btn-all" onclick='showCardList("all")' type="button"
@@ -56,12 +54,12 @@
                     class=" btn py-2 px-3 text-gray-500">Closed</button>
             </div>
         </nav>
-
+        <!-- info section -->
         <section class="p-6 flex items-center justify-between mt-4">
             <div class="flex items-center gap-2">
                 <img src="../assets/Aperture.png" alt="Aperture">
                 <div>
-                    <p class="font-semibold text-xl"><span id="total-issues">50</span> Issues</p>
+                    <p class="font-semibold text-xl"><span id="total-issues">0</span> Issues</p>
                     <p class="text-gray-500">Track and manage your project issues</p>
                 </div>
             </div>
@@ -70,206 +68,12 @@
                 <div class="w-3 h-3 bg-purple-600 rounded-full ml-2"></div><span>Closed</span>
             </div>
         </section>
+        <!-- card container -->
+        <section id="card-container" class="p-6 grid grid-cols-4 gap-3 relative">
+            <!-- currently I don't know how to build awesome spinner so I have used daisy UI. I will surely learn to make beautiful loader later. -->
+            <!-- there should be some module on spinner and animation  -->
+            <span id="spinner" class="loading loading-spinner text-secondary absolute top-1/2 left-1/2 z-10"></span>
 
-        <section id="card-container" class="p-6 grid grid-cols-4 gap-3">
-
-            <div class="rounded-lg p-4 border-t-4 border-t-green-600 card-shadow">
-
-                <div class="flex justify-between items-center mb-3">
-                    <img src="../assets/Open-Status.png" alt="open">
-                    <p class="uppercase text-red-600 bg-red-100 py-2 px-6 rounded-full font-medium text-sm text-center">
-                        High</p>
-                </div>
-                <div class="mb-3">
-                    <h3 class="font-semibold capitalize mb-2 ">Fix navigation menu on mobile devices</h3>
-                    <p class="text-gray-500 tex-sm ">The navigation menu doesn't collapse properly on mobile devices..
-                    </p>
-                </div>
-
-                <div class="flex items-center gap-1 pb-4 border-b border-gray-300 ">
-                    <button
-                        class="text-red-600 border border-red-300 bg-red-100 uppercase rounded-full text-sm font-medium p-1">
-                        <i class="fa-solid fa-bug mr-[2px]"></i>Bug
-                    </button>
-                    <button
-                        class="text-orange-600 border border-orange-300 bg-orange-100 uppercase rounded-full text-sm font-medium p-1">
-                        <i class="fa-solid fa-life-ring "></i>Help Wanted
-                    </button>
-                </div>
-                <div class="mt-4 space-y-2">
-                    <p class="text-gray-500 text-sm text-start">
-                        #1 by john_doe
-                    </p>
-                    <p class="text-gray-500 text-sm text-start">
-                        1/15/2024
-                    </p>
-                </div>
-            </div>
-
-            <div class="card p-4 border-t-4 border-t-green-600 card-shadow">
-
-                <div class="flex justify-between items-center mb-3">
-                    <img src="../assets/Closed-Status.png" alt="closed">
-                    <p class="uppercase text-red-600 bg-red-100 py-2 px-6 rounded-full font-medium text-sm text-center">
-                        High</p>
-                </div>
-                <div class="mb-3">
-                    <h3 class="font-semibold capitalize mb-2 ">Fix navigation menu on mobile devices</h3>
-                    <p class="text-gray-500 tex-sm ">The navigation menu doesn't collapse properly on mobile devices..
-                    </p>
-                </div>
-
-                <div class="flex items-center gap-1 pb-4 border-b border-gray-300 ">
-                    <button
-                        class="text-red-600 border border-red-300 bg-red-100 uppercase rounded-full text-sm font-medium p-1">
-                        <i class="fa-solid fa-bug mr-[2px]"></i>Bug
-                    </button>
-                    <button
-                        class="text-orange-600 border border-orange-300 bg-orange-100 uppercase rounded-full text-sm font-medium p-1">
-                        <i class="fa-solid fa-life-ring "></i>Help Wanted
-                    </button>
-                </div>
-                <div class="mt-4 space-y-2">
-                    <p class="text-gray-500 text-sm">
-                        #1 by john_doe
-                    </p>
-                    <p class="text-gray-500 text-sm">
-                        1/15/2024
-                    </p>
-                </div>
-            </div>
-
-            <div class="card p-4 border-t-4 border-t-green-600 card-shadow">
-
-                <div class="flex justify-between items-center mb-3">
-                    <img src="../assets/Open-Status.png" alt="open">
-                    <p class="uppercase text-red-600 bg-red-100 py-2 px-6 rounded-full font-medium text-sm text-center">
-                        High</p>
-                </div>
-                <div class="mb-3">
-                    <h3 class="font-semibold capitalize mb-2 ">Fix navigation menu on mobile devices</h3>
-                    <p class="text-gray-500 tex-sm ">The navigation menu doesn't collapse properly on mobile devices..
-                    </p>
-                </div>
-
-                <div class="flex items-center gap-1 pb-4 border-b border-gray-300 ">
-                    <button
-                        class="text-red-600 border border-red-300 bg-red-100 uppercase rounded-full text-sm font-medium p-1">
-                        <i class="fa-solid fa-bug mr-[2px]"></i>Bug
-                    </button>
-                    <button
-                        class="text-orange-600 border border-orange-300 bg-orange-100 uppercase rounded-full text-sm font-medium p-1">
-                        <i class="fa-solid fa-life-ring "></i>Help Wanted
-                    </button>
-                </div>
-                <div class="mt-4 space-y-2">
-                    <p class="text-gray-500 text-sm">
-                        #1 by john_doe
-                    </p>
-                    <p class="text-gray-500 text-sm">
-                        1/15/2024
-                    </p>
-                </div>
-            </div>
-
-            <div class="card p-4 border-t-4 border-t-green-600 card-shadow">
-
-                <div class="flex justify-between items-center mb-3">
-                    <img src="../assets/Open-Status.png" alt="open">
-                    <p class="uppercase text-red-600 bg-red-100 py-2 px-6 rounded-full font-medium text-sm text-center">
-                        High</p>
-                </div>
-                <div class="mb-3">
-                    <h3 class="font-semibold capitalize mb-2 ">Fix navigation menu on mobile devices</h3>
-                    <p class="text-gray-500 tex-sm ">The navigation menu doesn't collapse properly on mobile devices..
-                    </p>
-                </div>
-
-                <div class="flex items-center gap-1 pb-4 border-b border-gray-300 ">
-                    <button
-                        class="text-red-600 border border-red-300 bg-red-100 uppercase rounded-full text-sm font-medium p-1">
-                        <i class="fa-solid fa-bug mr-[2px]"></i>Bug
-                    </button>
-                    <button
-                        class="text-orange-600 border border-orange-300 bg-orange-100 uppercase rounded-full text-sm font-medium p-1">
-                        <i class="fa-solid fa-life-ring "></i>Help Wanted
-                    </button>
-                </div>
-                <div class="mt-4 space-y-2">
-                    <p class="text-gray-500 text-sm">
-                        #1 by john_doe
-                    </p>
-                    <p class="text-gray-500 text-sm">
-                        1/15/2024
-                    </p>
-                </div>
-            </div>
-
-            <div class="card p-4 border-t-4 border-t-green-600 card-shadow">
-
-                <div class="flex justify-between items-center mb-3">
-                    <img src="../assets/Open-Status.png" alt="open">
-                    <p class="uppercase text-red-600 bg-red-100 py-2 px-6 rounded-full font-medium text-sm text-center">
-                        High</p>
-                </div>
-                <div class="mb-3">
-                    <h3 class="font-semibold capitalize mb-2 ">Fix navigation menu on mobile devices</h3>
-                    <p class="text-gray-500 tex-sm ">The navigation menu doesn't collapse properly on mobile devices..
-                    </p>
-                </div>
-
-                <div class="flex items-center gap-1 pb-4 border-b border-gray-300 ">
-                    <button
-                        class="text-red-600 border border-red-300 bg-red-100 uppercase rounded-full text-sm font-medium p-1">
-                        <i class="fa-solid fa-bug mr-[2px]"></i>Bug
-                    </button>
-                    <button
-                        class="text-orange-600 border border-orange-300 bg-orange-100 uppercase rounded-full text-sm font-medium p-1">
-                        <i class="fa-solid fa-life-ring "></i>Help Wanted
-                    </button>
-                </div>
-                <div class="mt-4 space-y-2">
-                    <p class="text-gray-500 text-sm">
-                        #1 by john_doe
-                    </p>
-                    <p class="text-gray-500 text-sm">
-                        1/15/2024
-                    </p>
-                </div>
-            </div>
-
-            <div class="card p-4 border-t-4 border-t-green-600 card-shadow">
-
-                <div class="flex justify-between items-center mb-3">
-                    <img src="../assets/Open-Status.png" alt="open">
-                    <p class="uppercase text-red-600 bg-red-100 py-2 px-6 rounded-full font-medium text-sm text-center">
-                        High</p>
-                </div>
-                <div class="mb-3">
-                    <h3 class="font-semibold capitalize mb-2 ">Fix navigation menu on mobile devices</h3>
-                    <p class="text-gray-500 tex-sm ">The navigation menu doesn't collapse properly on mobile devices..
-                    </p>
-                </div>
-
-                <div class="flex items-center gap-1 pb-4 border-b border-gray-300 ">
-                    <button
-                        class="text-red-600 border border-red-300 bg-red-100 uppercase rounded-full text-sm font-medium p-1">
-                        <i class="fa-solid fa-bug mr-[2px]"></i>Bug
-                    </button>
-                    <button
-                        class="text-orange-600 border border-orange-300 bg-orange-100 uppercase rounded-full text-sm font-medium p-1">
-                        <i class="fa-solid fa-life-ring "></i>Help Wanted
-                    </button>
-                </div>
-                <div class="mt-4 space-y-2">
-                    <p class="text-gray-500 text-sm">
-                        #1 by john_doe
-                    </p>
-                    <p class="text-gray-500 text-sm">
-                        1/15/2024
-                    </p>
-                </div>
-            </div>
         </section>
     </main>
 

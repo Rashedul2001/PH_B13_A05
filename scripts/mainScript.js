@@ -3,11 +3,18 @@ const totalIssue = document.getElementById("total-issues");
 const allBtn = document.getElementById("btn-all")
 const openBtn = document.getElementById("btn-open")
 const closedBtn = document.getElementById("btn-closed")
+const searchBox = document.getElementById("search-box");
+const spinner = document.getElementById("spinner");
 
 let allCardList;
 
-
-
+const showSpinner = (status) => {
+    if (status) {
+        spinner.classList.remove("hidden");
+    } else {
+        spinner.classList.add("hidden");
+    }
+};
 
 const createCard = (issue) => {
     const card = document.createElement("div");
@@ -87,13 +94,14 @@ const showAllCardList = (issues) => {
         cardContainer.append(card);
     });
 
+    showSpinner(false);
     allCardList = document.querySelectorAll(".issue-card")
 }
 
 
 
 const fetchAllData = async () => {
-    //showSpinner
+    showSpinner(true);
     try {
         const response = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
         if (!response.ok) {
@@ -106,6 +114,9 @@ const fetchAllData = async () => {
     catch (error) {
         alert("Couldn't fetch the issues. Please Try Again by refreshing the page");
         console.log(error);
+        cardContainer.innerHTML = "<p class='text-center text-red-500'>Failed to load issues.</p>";
+        showSpinner(false);
+
     }
 
 
@@ -127,7 +138,6 @@ function showCardList(category) {
     if (category === "all") {
         allCardList.forEach(card => {
             card.classList.remove("hidden");
-            console.log(cardCnt);
             cardCnt++;
         });
         allBtn.classList.add("btn-primary", "text-white");
@@ -161,4 +171,10 @@ function showCardList(category) {
         totalIssue.innerText = cardCnt;
     }
 }
+
+searchBox.addEventListener("keydown", () => {
+    const searchTerm = searchBox.value.toLowerCase();
+
+});
+
 

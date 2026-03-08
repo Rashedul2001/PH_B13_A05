@@ -1,5 +1,7 @@
-<!-- TODO: card tags like bugs and help wanted are not contained correctly withing the closed background. fix this  -->
 <!--TODO: rebuild the header section -->
+<!-- TODO: ask whether I need to make the design pixel perfect as figma. Also ask the anomaly in the header section with the search and create button  -->
+<!-- TODO: ask the anomaly about the container -->
+<!-- TODO: should I use two info at the bottom or 4 info at the bottom -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,13 +43,17 @@
             </div>
         </div>
     </header>
+
     <main class="mt-16 container mx-auto">
         <!-- issue buttons  -->
         <nav class="flex items-start p-6">
-            <div id="catagory" class=" grid grid-cols-3 gap-2">
-                <button type="button" class="catagory-btn btn btn-primary py-2 px-3 text-white">All</button>
-                <button type="button" class="catagory-btn btn py-2 px-3 text-gray-500">Open</button>
-                <button type="button" class="btn py-2 px-3 text-gray-500">Closed</button>
+            <div class=" grid grid-cols-3 gap-2">
+                <button id="btn-all" onclick='showCardList("all")' type="button"
+                    class=" btn btn-primary py-2 px-3 text-white">All</button>
+                <button id="btn-open" onclick='showCardList("open")' type="button"
+                    class=" btn py-2 px-3 text-gray-500">Open</button>
+                <button id="btn-closed" onclick='showCardList("closed")' type="button"
+                    class=" btn py-2 px-3 text-gray-500">Closed</button>
             </div>
         </nav>
 
@@ -55,7 +61,7 @@
             <div class="flex items-center gap-2">
                 <img src="../assets/Aperture.png" alt="Aperture">
                 <div>
-                    <p class="font-semibold text-xl">50 Issues</p>
+                    <p class="font-semibold text-xl"><span id="total-issues">50</span> Issues</p>
                     <p class="text-gray-500">Track and manage your project issues</p>
                 </div>
             </div>
@@ -67,7 +73,7 @@
 
         <section id="card-container" class="p-6 grid grid-cols-4 gap-3">
 
-            <div class="card p-4 border-t-4 border-t-green-600 card-shadow">
+            <div class="rounded-lg p-4 border-t-4 border-t-green-600 card-shadow">
 
                 <div class="flex justify-between items-center mb-3">
                     <img src="../assets/Open-Status.png" alt="open">
@@ -103,7 +109,7 @@
             <div class="card p-4 border-t-4 border-t-green-600 card-shadow">
 
                 <div class="flex justify-between items-center mb-3">
-                    <img src="../assets/Open-Status.png" alt="open">
+                    <img src="../assets/Closed-Status.png" alt="closed">
                     <p class="uppercase text-red-600 bg-red-100 py-2 px-6 rounded-full font-medium text-sm text-center">
                         High</p>
                 </div>

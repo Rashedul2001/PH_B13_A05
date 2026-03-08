@@ -8,6 +8,16 @@ const spinner = document.getElementById("spinner");
 
 let allCardList;
 
+//it's little bit messy I know but noting to do cause working at night no time to make refactor
+const goToAllTab = () => {
+    allBtn.classList.remove("btn-primary", "text-white", "text-gray-500");
+    openBtn.classList.remove("btn-primary", "text-white", "text-gray-500");
+    closedBtn.classList.remove("btn-primary", "text-white", "text-gray-500");
+    allBtn.classList.add("btn-primary", "text-white");
+    openBtn.classList.add("text-gray-500");
+    closedBtn.classList.add("text-gray-500");
+}
+
 const showSpinner = (status) => {
     if (status) {
         spinner.classList.remove("hidden");
@@ -93,7 +103,7 @@ const showAllCardList = (issues) => {
         const card = createCard(issue);
         cardContainer.append(card);
     });
-
+    goToAllTab();
     showSpinner(false);
     allCardList = document.querySelectorAll(".issue-card")
 }
@@ -113,7 +123,7 @@ const fetchAllData = async () => {
     }
     catch (error) {
         alert("Couldn't fetch the issues. Please Try Again by refreshing the page");
-        console.log(error);
+        // console.log(error);
         cardContainer.innerHTML = "<p class='text-center text-red-500'>Failed to load issues.</p>";
         showSpinner(false);
 
@@ -171,9 +181,36 @@ function showCardList(category) {
         totalIssue.innerText = cardCnt;
     }
 }
+const search = async (searchTerm) => {
+    try {
+        const response = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchTerm}`)
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data.data;
+    }
+    catch (e) {
+        console.error("Error fetching search results:" + e);
+        return [];
+    }
 
-searchBox.addEventListener("keydown", () => {
-    const searchTerm = searchBox.value.toLowerCase();
+
+
+}
+
+searchBox.addEventListener("keydown", async (e) => {
+    if (e.key !== "Enter") return;
+    showSpinner(true);
+    const searchTerm = searchBox.value.toLowerCase().trim();
+    const issues = await search(searchTerm);
+    if (issues.length === 0) {
+        totalIssue.innerText = issues.length;
+        cardContainer.innerHTML = "<div class='text-center text-gray-500'>No issues found.</div>";
+        showSpinner(false);
+        return;
+    }
+    showAllCardList(issues);
 
 });
 

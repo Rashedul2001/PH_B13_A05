@@ -24,6 +24,11 @@
 </head>
 
 <body>
+    <!-- currently I don't know how to build spinner so I have used daisy UI. I will surely learn to make beautiful loader later. -->
+    <!-- there should be some module on spinner and animation  -->
+    <div id="spinner" class="fixed inset-0 backdrop-blur-[1px] flex items-center justify-center z-50 hidden">
+        <div class="loading loading-spinner text-secondary "></div>
+    </div>
     <header class="px-20">
         <div class="navbar bg-base-100 shadow-sm">
             <div class="flex-1">
@@ -69,10 +74,7 @@
             </div>
         </section>
         <!-- card container -->
-        <section id="card-container" class="p-6 grid grid-cols-4 gap-3 relative">
-            <!-- currently I don't know how to build awesome spinner so I have used daisy UI. I will surely learn to make beautiful loader later. -->
-            <!-- there should be some module on spinner and animation  -->
-            <span id="spinner" class="loading loading-spinner text-secondary absolute top-1/2 left-1/2 z-10"></span>
+        <section id="card-container" class="p-6 grid grid-cols-4 gap-3">
 
         </section>
     </main>

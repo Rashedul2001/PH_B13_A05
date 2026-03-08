@@ -137,6 +137,7 @@ fetchAllData();
 
 
 function showCardList(category) {
+    showSpinner(true);
     let cardCnt = 0;
     allCardList.forEach(card => {
         card.classList.add("hidden");
@@ -180,6 +181,7 @@ function showCardList(category) {
         openBtn.classList.add("text-gray-500");
         totalIssue.innerText = cardCnt;
     }
+    showSpinner(false);
 }
 const search = async (searchTerm) => {
     try {

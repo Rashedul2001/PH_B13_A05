@@ -27,23 +27,25 @@
     <div id="spinner" class="fixed inset-0 backdrop-blur-[1px] flex items-center justify-center z-50 hidden">
         <div class="loading loading-spinner text-secondary "></div>
     </div>
-    <header class="px-14 py-4 flex justify-between items-center">
+    <!-- I could use flex-wrap and left right position for another design. But don't know if it is good design or not -->
+    <header class="px-5 sm:px-14 py-4 flex justify-between items-center gap-2 flex-col sm:flex-row ">
         <div class="">
-            <a class="text-2xl font-semibold"><img src="../assets/github-logo.png" alt="GitHub Logo"
-                    class="h-[1.5em] inline-block">
+            <a class="text-xl sm:text-2xl font-medium sm:font-semibold"><img src="../assets/github-logo.png"
+                    alt="GitHub Logo" class="h-[1.5em] inline-block">
                 GitHub Issues Tracker</a>
         </div>
-        <div class="flex gap-4 items-center ">
+        <div class="flex gap-4 items-center  ">
             <div class="relative">
                 <input id="search-box" type="search" name="search" placeholder="Search issues..."
-                    class="w-80 py-3 pr-3 pl-10 border-gray-300 rounded-md">
-                <i class="fa-solid fa-magnifying-glass absolute top-[18px] left-4 text-gray-400  "></i>
+                    class="w-44  lg:w-80 py-2 pr-3 pl-10 border-gray-300 rounded-md">
+                <i class="fa-solid fa-magnifying-glass absolute top-[14px] left-4 text-gray-400  "></i>
             </div>
-            <button class="btn btn-primary px-4 py-6 font-semibold "><i class="fa-solid fa-plus align-middle"></i>New
-                Issue</button>
+            <button class="btn btn-primary px-3 py-5 font-semibold "><i class="fa-solid fa-plus align-middle"></i><span
+                    class="hidden md:inline-block">New
+                    Issue</span></button>
         </div>
     </header>
-    <main class="mt-16 container mx-auto ">
+    <main class="mt-16 container mx-auto hidden ">
         <!-- category buttons  -->
         <nav class="flex items-start p-6">
             <div class=" grid grid-cols-3 gap-2">

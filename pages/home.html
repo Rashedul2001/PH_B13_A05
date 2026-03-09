@@ -1,5 +1,3 @@
-<!--TODO: rebuild the header section -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,24 +27,22 @@
     <div id="spinner" class="fixed inset-0 backdrop-blur-[1px] flex items-center justify-center z-50 hidden">
         <div class="loading loading-spinner text-secondary "></div>
     </div>
-    <header class="px-20">
-        <div class="navbar bg-base-100 shadow-sm">
-            <div class="flex-1">
-                <a class="btn btn-ghost text-2xl font-semibold"><img src="../assets/github-logo.png" alt="GitHub Logo"
-                        class="h-[1.5em]"> GitHub Issues Tracker</a>
+    <header class="px-14 py-4 flex justify-between items-center">
+        <div class="">
+            <a class="text-2xl font-semibold"><img src="../assets/github-logo.png" alt="GitHub Logo"
+                    class="h-[1.5em] inline-block">
+                GitHub Issues Tracker</a>
+        </div>
+        <div class="flex gap-4 items-center ">
+            <div class="relative">
+                <input id="search-box" type="search" name="search" placeholder="Search issues..."
+                    class="w-80 py-3 pr-3 pl-10 border-gray-300 rounded-md">
+                <i class="fa-solid fa-magnifying-glass absolute top-[18px] left-4 text-gray-400  "></i>
             </div>
-            <div class="flex gap-2 items-center ">
-                <div class="relative">
-                    <input id="search-box" type="search" name="" id="" placeholder="Search issues..."
-                        class="w-80 py-3 pr-3 pl-10 border-gray-300 rounded-md">
-                    <i class="fa-solid fa-magnifying-glass absolute top-[18px] left-4 text-gray-400  "></i>
-                </div>
-                <button class="btn btn-primary px-4 py-6 font-semibold "><i class="fa-solid fa-plus"></i>New
-                    Issue</button>
-            </div>
+            <button class="btn btn-primary px-4 py-6 font-semibold "><i class="fa-solid fa-plus align-middle"></i>New
+                Issue</button>
         </div>
     </header>
-
     <main class="mt-16 container mx-auto ">
         <!-- category buttons  -->
         <nav class="flex items-start p-6">

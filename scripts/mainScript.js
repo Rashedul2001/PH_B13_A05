@@ -212,12 +212,13 @@ searchBox.addEventListener("keydown", async (e) => {
     showSpinner(true);
     const searchTerm = searchBox.value.toLowerCase().trim();
     const issues = await search(searchTerm);
-    if (issues.length === 0) {
+    if (issues.length === 0 && searchTerm) {
         totalIssue.innerText = issues.length;
-        cardContainer.innerHTML = "<div class='text-center text-gray-500'>No issues found.</div>";
+        cardContainer.innerHTML = "<p class='text-center col-span-4 text-gray-500'> No issues found.</p>";
         showSpinner(false);
         return;
     }
+    if (searchTerm === "") { fetchAllData(); return; }
     showAllCardList(issues);
 
 });

@@ -246,16 +246,22 @@ const createAndShowModal = async (id) => {
     modal.id = "modal";
     modal.innerHTML = `
     <div id="parent" class="fixed inset-0 flex justify-center items-center h-screen backdrop-blur-[1px] ">
-        <section id="modal-body" class="bg-gray-200 rounded-xl p-8 space-y-6 shadow-[0px_0px_10px_4px_rgba(0,0,0,0.4)]">
+        <section id="modal-body" class="m-3 bg-gray-200 rounded-xl p-8 space-y-6 shadow-[0px_0px_10px_4px_rgba(0,0,0,0.4)]">
             <div class="">
                 <h1 class="text-2xl font-bold mb-2">${issue.title}</h1>
-                <p class="text-gray-500 text-sm"><span
+                <div class="flex items-center gap-2">
+                    <p class="text-gray-500 text-sm"><span
                         class="bg-${status ? 'green' : 'purple'}-600 rounded-full py-1 px-2 text-white capitalize">${issue.status}${status ? "ed" : ""}</span>
-                    <span class="w-1 h-1 bg-gray-500 inline-block align-middle rounded-full mx-1  "></span>
-                    Opened by ${issue.author}
-                    <span class="w-1 h-1 bg-gray-500 inline-block align-middle rounded-full mx-1  "></span>
-                    ${new Date(issue.createdAt).toLocaleDateString()}
-                </p>
+                    </p>
+                    <div class="flex items-center gap-1 flex-wrap">
+                        <div>
+                        <span class="w-1 h-1 bg-gray-500 inline-block align-middle rounded-full mx-1  "></span>
+                        Opened by ${issue.author}</div>
+                        <div>
+                        <span class="w-1 h-1 bg-gray-500 inline-block align-middle rounded-full mx-1  "></span>
+                        ${new Date(issue.createdAt).toLocaleDateString()}</div>
+                    </div>
+                </div>
             </div>
             <div class=" flex items-center flex-wrap gap-1">
                 ${getLabel(issue).join('')}

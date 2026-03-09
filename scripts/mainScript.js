@@ -1,4 +1,3 @@
-// TODO: set empty search to get all the data 
 
 const cardContainer = document.getElementById("card-container");
 const totalIssue = document.getElementById("total-issues");
@@ -129,7 +128,6 @@ const fetchAllData = async () => {
     }
     catch (error) {
         alert("Couldn't fetch the issues. Please Try Again by refreshing the page");
-        // console.log(error);
         cardContainer.innerHTML = "<p class='text-center text-red-500'>Failed to load issues.</p>";
         showSpinner(false);
 

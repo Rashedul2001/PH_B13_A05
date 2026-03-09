@@ -24,11 +24,11 @@
 <body>
     <!-- currently I don't know how to build spinner so I have used daisy UI. I will surely learn to make beautiful loader later. -->
     <!-- there should be some module on spinner and animation  -->
-    <div id="spinner" class="fixed inset-0 backdrop-blur-[1px] flex items-center justify-center z-50 hidden">
+    <div id="spinner" class="fixed inset-0 flex items-center justify-center z-50 hidden">
         <div class="loading loading-spinner text-secondary "></div>
     </div>
     <!-- I could use flex-wrap and left right position for another design. But don't know if it is good design or not -->
-    <header class="px-5 sm:px-14 py-4 flex justify-between items-center gap-2 flex-col sm:flex-row ">
+    <header class="px-5 sm:px-14 py-4 flex justify-between items-center gap-2 flex-col sm:flex-row shadow-md ">
         <div class="">
             <a class="text-xl sm:text-2xl font-medium sm:font-semibold"><img src="../assets/github-logo.png"
                     alt="GitHub Logo" class="h-[1.5em] inline-block">
@@ -45,7 +45,7 @@
                     Issue</span></button>
         </div>
     </header>
-    <main class="mt-16 container mx-auto hidden ">
+    <main class="lg:mt-12 container mx-auto ">
         <!-- category buttons  -->
         <nav class="flex items-start p-6">
             <div class=" grid grid-cols-3 gap-2">
@@ -58,7 +58,7 @@
             </div>
         </nav>
         <!-- info section -->
-        <section class="p-6 flex items-center justify-between mt-4">
+        <section class="px-6  flex items-center justify-between md:mt-4">
             <div class="flex items-center gap-2">
                 <img src="../assets/Aperture.png" alt="Aperture">
                 <div>
@@ -72,7 +72,7 @@
             </div>
         </section>
         <!-- card container -->
-        <section id="card-container" class="p-6 grid grid-cols-4 gap-3">
+        <section id="card-container" class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
 
         </section>
     </main>
